@@ -1,23 +1,25 @@
+import * as actions from "./actionTypes";
+
 export function sumCalled() {
   return {
-    type: "sumCalled",
+    type: actions.sumCalled,
   };
 }
 export function num1Changed(value) {
   return {
-    type: "num1Changed",
+    type: actions.setNum1Value,
     payload: { value },
   };
 }
 export function num2Changed(value) {
   return {
-    type: "num2Changed",
+    type: actions.setNum2Value,
     payload: { value },
   };
 }
 
 export function subtractCalled() {
   return {
-    type: "subtractCalled",
+    type: actions.subtractCalled,
   };
 }
