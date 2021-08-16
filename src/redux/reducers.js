@@ -24,6 +24,13 @@ export default function reducer(state = INITIAL_STATE, action) {
         ...state,
         ans: parseFloat(num1) - parseFloat(num2),
       };
+    case actions.resetCalled:
+      return {
+        ...state,
+        num1: "0",
+        num2: "0",
+        ans: "0",
+      };
     default:
       return state;
   }

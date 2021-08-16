@@ -4,15 +4,17 @@ import "./App.css";
 import Background from "./components/Background/background.component.jsx";
 import CustomButton from "./components/CustomButton/custom-button.component";
 import CustomInput from "./components/CustomInput/input.component.jsx";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import {
   sumCalled,
   subtractCalled,
   num1Changed,
   num2Changed,
+  resetCalled,
 } from "./redux/actions";
+import { useDispatch, useSelector } from "react-redux";
 
-class App extends React.Component {
+function App() {
   //No need of this material now because of redux
   // constructor() {
   //   super();
@@ -40,55 +42,83 @@ class App extends React.Component {
   //   });
   // };
 
-  render() {
-    return (
-      <div className="App">
-        <Background text="Calculator" />
-        <CustomInput
-          onChange={this.props.num1Changed}
-          name="num1"
-          value={this.props.num1}
-        />
-        <CustomInput
-          name="num2"
-          value={this.props.num2}
-          onChange={this.props.num2Changed}
-        />
-        <CustomButton onChange={this.props.sumCalled}>+</CustomButton>
-        <CustomButton onChange={this.props.subtractCalled}>-</CustomButton>
-        <CustomInput
-          value={this.props.ans}
-          onChange={this.props.num1Changed}
-          readOnly
-        />
-      </div>
-    );
-  }
+  const num1 = useSelector((state) => state.num1);
+  const num2 = useSelector((state) => state.num2);
+  const ans = useSelector((state) => state.ans);
+  const dispatch = useDispatch();
+
+  return (
+    <div className="App">
+      <Background text="Calculator" />
+      <CustomInput
+        onChange={(event) => {
+          dispatch(num1Changed(event.target.value));
+        }}
+        name="num1"
+        value={num1}
+      />
+      <CustomInput
+        name="num2"
+        value={num2}
+        onChange={(event) => {
+          dispatch(num2Changed(event.target.value));
+        }}
+      />
+      <CustomButton
+        onChange={() => {
+          dispatch(sumCalled());
+        }}
+      >
+        +
+      </CustomButton>
+      <CustomButton
+        onChange={() => {
+          dispatch(subtractCalled());
+        }}
+      >
+        -
+      </CustomButton>
+      <CustomInput value={ans} readOnly />
+      <CustomButton
+        onChange={() => {
+          dispatch(resetCalled());
+        }}
+      >
+        RESET
+      </CustomButton>
+    </div>
+  );
 }
 
-function mapStateToProps(state) {
-  return {
-    num1: state.num1,
-    num2: state.num2,
-    ans: state.ans,
-  };
-}
+export default App;
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    sumCalled: () => {
-      dispatch(sumCalled());
-    },
-    subtractCalled: () => {
-      dispatch(subtractCalled());
-    },
-    num1Changed: (e) => {
-      dispatch(num1Changed(e.target.value));
-    },
-    num2Changed: (e) => {
-      dispatch(num2Changed(e.target.value));
-    },
-  };
-};
+//Don't need this with React hooks.
+// function mapStateToProps(state) {
+//   return {
+//     num1: state.num1,
+//     num2: state.num2,
+//     ans: state.ans,
+//   };
+// }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+// const mapDispatchToProps = (dispatch) => {
+//   return {
+//     sumCalled: () => {
+//       dispatch(sumCalled());
+//     },
+//     subtractCalled: () => {
+//       dispatch(subtractCalled());
+//     },
+//     resetCalled: () => {
+//       dispatch(resetCalled());
+//     },
+//     num1Changed: (e) => {
+//       dispatch(num1Changed(e.target.value));
+//     },
+//     num2Changed: (e) => {
+//       dispatch(num2Changed(e.target.value));
+//     },
+//   };
+// };
+
+// export default connect(mapStateToProps, mapDispatchToProps)(App);

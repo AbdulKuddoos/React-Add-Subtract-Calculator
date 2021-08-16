@@ -1,10 +1,16 @@
 import React from "react";
 import "./input.styles.css";
 
-const CustomInput = ({ value, name, onChange }) => {
+const CustomInput = (props) => {
   return (
     <span>
-      <input name={name} value={value} onChange={onChange} required />
+      <input
+        name={props.name}
+        value={props.value}
+        onChange={props.onChange}
+        required
+        {...props}
+      />
     </span>
   );
 };

@@ -5,6 +5,13 @@ export function sumCalled() {
     type: actions.sumCalled,
   };
 }
+
+export function resetCalled() {
+  return {
+    type: actions.resetCalled,
+  };
+}
+
 export function num1Changed(value) {
   return {
     type: actions.setNum1Value,
