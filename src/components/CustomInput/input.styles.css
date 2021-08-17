@@ -1,0 +1,35 @@
+.custom-input {
+  font-size: 14px;
+  position: relative;
+  margin: 5px;
+}
+
+.custom-input input {
+  border: 2px solid rgba(5, 35, 49, 0.288);
+  border-radius: 5px;
+  -webkit-appearance: none;
+  -ms-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: transparent;
+  padding: 12px;
+  border-radius: 3px;
+  width: 250px;
+  font-size: 14px;
+}
+
+.custom-input input:hover {
+  background: white;
+  border: 2px solid transparent;
+}
+
+.custom-input input:focus {
+  background: white;
+  border: 2px solid transparent;
+}
+
+@media (max-width: 800px) {
+  .custom-input input {
+    width: 100px;
+  }
+}

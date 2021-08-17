@@ -2,9 +2,9 @@ import React from "react";
 import "./custom-button.styles.css";
 
 const CustomButton = ({ children, onChange }) => (
-  <span>
-    <button onClick={onChange}>{children}</button>
-  </span>
+  <div>
+    <button className="custom-button" onClick={onChange}>{children}</button>
+  </div>
 );
 
 export default CustomButton;

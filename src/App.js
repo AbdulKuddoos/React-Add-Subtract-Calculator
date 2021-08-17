@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 function App() {
   //No need of this material now because of redux
+  // class App extends React.Component{
   // constructor() {
   //   super();
   //   this.state = {

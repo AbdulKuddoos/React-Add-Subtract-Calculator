@@ -4,7 +4,7 @@ import "./background.styles.css";
 class Background extends React.Component {
   render() {
     return (
-      <div className="body">
+      <div className="background">
         <h1>{this.props.text}</h1>
       </div>
     );

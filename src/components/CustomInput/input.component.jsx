@@ -3,7 +3,7 @@ import "./input.styles.css";
 
 const CustomInput = (props) => {
   return (
-    <span>
+    <div className="custom-input">
       <input
         name={props.name}
         value={props.value}
@@ -11,7 +11,7 @@ const CustomInput = (props) => {
         required
         {...props}
       />
-    </span>
+    </div>
   );
 };
 
